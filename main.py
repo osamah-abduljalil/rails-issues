@@ -7,12 +7,12 @@ with open("issues.csv", 'a', encoding='utf-8' ,newline="") as file:
         writer = csv.writer(file)
 
         writer.writerow(("id", "number", "state",
-        "milestone", "title", "comments_count","labels_count","user_name", "created_at", "uploaded_at", "closed_at"))
+        "milestone", "title", "comments_count","labels_count","user_name", "created_at", "uploaded_at", "closed_at","state_reason"))
 
         for issue in issues:
             writer.writerow((issue["id"], issue["number"],  issue["state"],
             issue["milestone"], issue["title"],
-            issue["comments_count"],issue["labels_count"],issue["user_name"], issue["created_at"], issue["updated_at"], issue["closed_at"]))
+            issue["comments_count"],issue["labels_count"],issue["user_name"], issue["created_at"], issue["updated_at"], issue["closed_at"],issue["state_reason"]))
 
 
         # =======================================================================================

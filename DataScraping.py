@@ -10,7 +10,7 @@ class GithubAPI:
         "page": 1,
         "state": "all",
     }
-    auth = {"Authorization": "token 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"}
+    auth = {"Authorization": "token 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"}
 
     def getIssues(self, url,pages):
 
@@ -47,6 +47,7 @@ class GithubAPI:
             issue["created_at"] = e["created_at"]
             issue["updated_at"] = e["updated_at"]
             issue["closed_at"] = e["closed_at"]
+            issue["state_reason"] = e["state_reason"]
             if not e["milestone"]:
                  issue["milestone"] = "null"
             else:
