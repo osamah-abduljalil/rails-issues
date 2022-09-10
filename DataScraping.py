@@ -47,7 +47,8 @@ class GithubAPI:
             issue["html_url"] = e["html_url"]
             issue["title"] = e["title"]
             issue["description"] = e["body"]
-            issue["comments"] = e["comments"]
+            issue["comments_count"] = e["comments"]
+            issue["labels_count"] = len(e["labels"])
             issue["created_at"] = e["created_at"]
             issue["updated_at"] = e["updated_at"]
             issue["closed_at"] = e["closed_at"]
@@ -56,7 +57,19 @@ class GithubAPI:
             else:
                  issue["milestone"] = e["milestone"]["title"]
 
-            
+            labels = []
+
+            for label in e["labels"]:
+                 labelIssue = collections.OrderedDict()
+                 labelIssue["issue_repo_url"] = e["repository_url"]
+                 labelIssue["issue_id"] = e["id"]
+                 labelIssue["issue_number"] = e["number"]
+                 labelIssue["label_id"] = label["id"]
+                 labelIssue["label"] = label["name"]
+                 labels.append(labelIssue)
+                 
+
+            issue["labels"] = labels
 
             self.results.append(issue)
 
