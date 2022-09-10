@@ -1,8 +1,6 @@
 from unittest import result
-import requests
-import collections
-from openpyxl import Workbook
-
+import requests # sudo pip install requests 
+import collections 
 
 class GithubAPI:
     results = []
@@ -12,7 +10,7 @@ class GithubAPI:
         "page": 1,
         "state": "all",
     }
-    auth = {"Authorization": "token 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"}
+    auth = {"Authorization": "token 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"}
 
     def getIssues(self, url,pages):
 
@@ -37,19 +35,15 @@ class GithubAPI:
         
         for e in self.raw:
             print("Checking issue " + str(e["number"]))
-
             issue = collections.OrderedDict()
             issue["id"] = e["id"]
             issue["number"] = e["number"]
-            issue["repo_url"] = e["repository_url"]
-            issue["issue_url"] = e["url"]
-            issue["events_url"] = e["events_url"]
             issue["state"] = e["state"]
-            issue["html_url"] = e["html_url"]
             issue["title"] = e["title"]
-            issue["description"] = e["body"]
+            # issue["description"] = e["body"]
             issue["comments_count"] = e["comments"]
             issue["labels_count"] = len(e["labels"])
+            issue["user_name"] = e["user"]["login"]
             issue["created_at"] = e["created_at"]
             issue["updated_at"] = e["updated_at"]
             issue["closed_at"] = e["closed_at"]
