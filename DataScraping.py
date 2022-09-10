@@ -12,7 +12,7 @@ class GithubAPI:
         "page": 1,
         "state": "all",
     }
-    auth = {"Authorization": "token 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"}
+    auth = {"Authorization": "token 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"}
 
     def getIssues(self, url,pages):
 
@@ -25,7 +25,7 @@ class GithubAPI:
         self.raw = []
 
         r = requests.get(url, params=self.issues_payload, headers=self.auth).json()
-        
+
         for i in range(pages):
             self.raw += r
 
@@ -34,6 +34,7 @@ class GithubAPI:
                 r = requests.get(url, params=self.issues_payload, headers=self.auth).json()
             else:
                 break
+        
         for e in self.raw:
             print("Checking issue " + str(e["number"]))
 
