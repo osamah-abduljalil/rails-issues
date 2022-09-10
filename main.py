@@ -1,7 +1,9 @@
 from DataScraping import GithubAPI
+import csv
 api=GithubAPI()
 issues = api.getIssues("https://api.github.com/repos/rails/rails/issues",5)
-
+print('issues:')
+print(issues)
 with open("issues.csv", 'a', encoding='utf-8' ,newline="") as file:
         writer = csv.writer(file)
 
@@ -11,7 +13,7 @@ with open("issues.csv", 'a', encoding='utf-8' ,newline="") as file:
         for issue in issues:
             writer.writerow((issue["id"], issue["number"], issue["issue_url"], issue["repo_url"], issue["events_url"], issue["state"],
             issue["html_url"], issue["milestone"], issue["title"],
-            issue["comments"], issue["created_at"], issue["updated_at"], issue["closed_at"]))
+            issue["comments_count"], issue["created_at"], issue["updated_at"], issue["closed_at"]))
 
 
         # =======================================================================================

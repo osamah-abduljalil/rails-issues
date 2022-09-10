@@ -25,7 +25,7 @@ class GithubAPI:
         self.raw = []
 
         r = requests.get(url, params=self.issues_payload, headers=self.auth).json()
-
+        
         for i in range(pages):
             self.raw += r
 
@@ -68,10 +68,13 @@ class GithubAPI:
                  labelIssue["label_id"] = label["id"]
                  labelIssue["label"] = label["name"]
                  labels.append(labelIssue)
-                 
+                 # self.results.append(labelIssue)
 
             issue["labels"] = labels
 
             self.results.append(issue)
+
+        return self.results
+
 
    
