@@ -25,3 +25,5 @@ max_label_closed <- max_label_issues %>% filter(state == "closed")
 max_label_state_reason <- max_label_closed %>% group_by(state_reason)  %>%summarise(count = n())
 
 print(summary(max_label_issues$comments_count))
+
+hist(summary(as.factor(labels$label)))

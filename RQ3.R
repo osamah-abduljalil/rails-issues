@@ -10,8 +10,6 @@ print(nrow(issues_grp_user$total_iussues)) # count of users
 print(min(issues_grp_user$total_iussues)) # count of minimum contributions
 print(max(issues_grp_user$total_iussues)) # count of maximum contributions
 
-
-
 users_stat <- issues_grp_user %>% group_by(total_iussues)  %>% summarise(count = n())
 print(summary( users_stat))
 
@@ -45,4 +43,7 @@ print((max_user_closed_issues_labels))
 print(summary(max_user_closed_issues_labels))
 
 
+ct<- cor.test(as.numeric(max_user_closed_issues$days_age),max_user_closed_issues$labels_count)
+print(ct)
 
+hist(summary(as.factor(issues$user_name)))
