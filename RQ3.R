@@ -7,8 +7,8 @@ issues_grp_user = issues %>% group_by(user_name)  %>%
                     summarise(total_iussues = n())
 
 print(nrow(issues_grp_user$total_iussues)) # count of users
-print(min(issues_grp_user$total_iussues)) # count of minimum contributer
-print(max(issues_grp_user$total_iussues)) # count of maximum contributer
+print(min(issues_grp_user$total_iussues)) # count of minimum contributions
+print(max(issues_grp_user$total_iussues)) # count of maximum contributions
 
 
 
